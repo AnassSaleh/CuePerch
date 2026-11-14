@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anasssaleh.github.io/FloatPrompter/sitemap.xml
