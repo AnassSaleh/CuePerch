@@ -1,0 +1,44 @@
+name: Bug report
+description: Something isn't working right
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Tell us what went wrong and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open FloatPrompter
+        2. Press Start
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: FloatPrompter version
+      placeholder: "1.0.0"
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Press Win+R, type `winver`, and copy the version line.
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Call or recording app (if relevant)
+      placeholder: "Zoom, Teams, OBS..."
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots, your monitor setup, or the contents of `%APPDATA%\FloatPrompter\log.txt` if it exists.

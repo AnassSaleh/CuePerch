@@ -19,7 +19,17 @@ It sits right under your webcam so you keep eye contact while you read, and it's
 ![Downloads](https://img.shields.io/github/downloads/AnassSaleh/FloatPrompter/total?color=blue)
 ![Stars](https://img.shields.io/github/stars/AnassSaleh/FloatPrompter?style=social)
 
-<img src="assets/screenshot-prompter.png" width="640" alt="FloatPrompter prompter panel scrolling a script" />
+<p>
+  <a href="https://github.com/AnassSaleh/FloatPrompter/releases/latest"><b>Download</b></a> ·
+  <a href="#-why-floatprompter">Features</a> ·
+  <a href="#%EF%B8%8F-hotkeys-work-in-any-app">Hotkeys</a> ·
+  <a href="#%EF%B8%8F-build-from-source">Build</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
+
+<img src="assets/demo.gif" width="900" alt="Demo: the script scrolls in FloatPrompter under the webcam on your screen, while people on the call see nothing" />
+
+<sub>Left: what you see. Right: what everyone on the call sees.</sub>
 
 </div>
 
@@ -28,7 +38,7 @@ It sits right under your webcam so you keep eye contact while you read, and it's
 ## ✨ Why FloatPrompter
 
 - 🎥 **Eye contact on calls.** The panel docks at the top-center of your screen, right under the webcam.
-- 🙈 **Hidden from screen share.** Viewers on Zoom, Teams, Meet, Discord, OBS or a recording never see it. Only you do.
+- 🙈 **Hidden from screen share.** Viewers on Zoom, Teams, Meet, Discord, OBS or a recording never see the prompter or your script window. Only you do.
 - 🎙️ **Voice activation.** The script scrolls only while you're talking and waits when you stop.
 - ⌨️ **Global hotkeys.** Control speed, pause and position from any app without switching windows.
 - 🪶 **Tiny and portable.** One ~110 KB `.exe`. No installer, no account, no internet, no tracking.
@@ -37,7 +47,9 @@ It sits right under your webcam so you keep eye contact while you read, and it's
 ## 🖼️ Screenshots
 
 <div align="center">
-<img src="assets/screenshot-app.png" width="760" alt="FloatPrompter main window with script editor and settings" />
+<img src="assets/screenshot-app.png" width="800" alt="FloatPrompter main window with script editor and settings" />
+
+<sub>The main window: paste your script, set speed, text size, font, look, voice activation and where the prompter sits.</sub>
 </div>
 
 ## 📥 Install
@@ -90,9 +102,15 @@ This uses the C# compiler that ships with Windows, so no SDK is needed. The outp
 
 Tests live in `tests\`: `run-tests.ps1` drives the real app through UI Automation, and `run-voice-test.ps1` checks voice detection.
 
+## 🗺️ Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
+
 ## 🤝 Contributing
 
-Issues and pull requests are welcome. If FloatPrompter helps you, a ⭐ helps other people find it.
+Bug reports, ideas and pull requests are welcome. [Open an issue](https://github.com/AnassSaleh/FloatPrompter/issues/new/choose) or read [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+
+If FloatPrompter helps you, a ⭐ helps other people find it.
 
 ## 📄 License
 
