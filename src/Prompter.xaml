@@ -1,0 +1,63 @@
+<Border xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="Root" CornerRadius="0,0,18,18" Background="#EB000000" SnapsToDevicePixels="False">
+  <Border.Resources>
+    <Style x:Key="IconBtn" TargetType="Button">
+      <Setter Property="Width" Value="32"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="b" CornerRadius="16" Background="Transparent">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="b" Property="Background" Value="#33FFFFFF"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="b" Property="Background" Value="#55FFFFFF"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Border.Resources>
+
+  <Grid x:Name="Viewport" ClipToBounds="True" Background="Transparent">
+    <Canvas x:Name="TextHost" ClipToBounds="True">
+      <TextBlock x:Name="ScriptText" TextWrapping="Wrap" Foreground="White"
+                 TextOptions.TextHintingMode="Animated" TextOptions.TextFormattingMode="Ideal"/>
+    </Canvas>
+
+    <TextBlock x:Name="Placeholder" Foreground="#99FFFFFF" FontSize="15" TextAlignment="Center"
+               HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20"
+               Text="Your script shows up here.&#10;Type or paste it in the FloatPrompter window." Visibility="Collapsed"/>
+
+    <Border x:Name="ProgressTrack" Width="3" HorizontalAlignment="Right" Margin="0,12,7,12"
+            CornerRadius="1.5" Background="#26FFFFFF">
+      <Border x:Name="ProgressFill" VerticalAlignment="Top" CornerRadius="1.5" Background="#99FFFFFF" Height="0"/>
+    </Border>
+
+    <Ellipse x:Name="MicDot" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Top"
+             Margin="10,9,0,0" Fill="#9CA3AF" Visibility="Collapsed"/>
+
+    <Border x:Name="Controls" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8"
+            CornerRadius="18" Background="#E6202124" Padding="3" Opacity="0" IsHitTestVisible="False">
+      <StackPanel Orientation="Horizontal">
+        <Button x:Name="BtnRestart" Style="{StaticResource IconBtn}" Content="&#xE892;" ToolTip="Back to start (Ctrl+Alt+R)"/>
+        <Button x:Name="BtnSlower" Style="{StaticResource IconBtn}" Content="&#xE738;" ToolTip="Slower (Ctrl+Alt+Down)"/>
+        <Button x:Name="BtnPlay" Style="{StaticResource IconBtn}" Content="&#xE768;" FontSize="16" ToolTip="Play / pause (Ctrl+Alt+P)"/>
+        <Button x:Name="BtnFaster" Style="{StaticResource IconBtn}" Content="&#xE710;" ToolTip="Faster (Ctrl+Alt+Up)"/>
+        <TextBlock x:Name="SpeedLabel" Foreground="#CCFFFFFF" FontSize="12" VerticalAlignment="Center" Margin="4,0,6,0" Text="Speed 6"/>
+        <Button x:Name="BtnEdit" Style="{StaticResource IconBtn}" Content="&#xE70F;" ToolTip="Edit script and settings"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</Border>
