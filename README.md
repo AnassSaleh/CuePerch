@@ -27,9 +27,9 @@ It sits right under your webcam so you keep eye contact while you read, and it's
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
 
-<img src="assets/demo.gif" width="900" alt="Demo: the script scrolls in FloatPrompter under the webcam on your screen, while people on the call see nothing" />
+<img src="assets/demo-v3.gif" width="900" alt="Demo: the FloatPrompter panel slides down under the webcam and scrolls a script, stops when the speaker pauses, and stays invisible to the call while the screen is shared" />
 
-<sub>Left: what you see. Right: what everyone on the call sees. The scrolling is a real recording of the app.</sub>
+<sub>The panel and script text are captured from the real app.</sub>
 
 </div>
 
