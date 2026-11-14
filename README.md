@@ -4,7 +4,7 @@
 
 # FloatPrompter
 
-**A free teleprompter for Windows, and an open-source alternative to Moody Teleprompter.**
+**A free teleprompter app for Windows 10 and 11, and an open-source alternative to Moody Teleprompter.**
 
 It sits at the top of your screen, right under the webcam, so you can read your notes and still look at the camera. On Windows 10 version 2004 or later, Zoom, Teams, Google Meet, OBS and screen recordings don't pick it up.
 
@@ -118,4 +118,4 @@ If FloatPrompter is useful to you, starring the repo helps other people find it.
 
 <sub>FloatPrompter is an independent project and is not affiliated with or endorsed by Moody or any other teleprompter vendor. Product names are used only for comparison.</sub>
 
-<sub>Keywords: teleprompter for Windows, free teleprompter, open source teleprompter, Moody Teleprompter alternative, video call teleprompter, Zoom teleprompter, Teams teleprompter, invisible teleprompter, screen share hidden teleprompter, webcam teleprompter, script reader.</sub>
+<sub>Keywords: teleprompter for Windows, teleprompter app for Windows 10 and 11, free teleprompter, open source teleprompter, Moody Teleprompter alternative, Moody Teleprompter for Windows alternative, autocue for PC, video call teleprompter, Zoom teleprompter, Microsoft Teams teleprompter, Google Meet teleprompter, OBS teleprompter, invisible teleprompter, teleprompter hidden from screen share, webcam teleprompter, eye contact teleprompter, voice activated teleprompter, script reader for presentations.</sub>
