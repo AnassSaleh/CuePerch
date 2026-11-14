@@ -6,7 +6,7 @@
 
 **A free teleprompter for Windows, and an open-source alternative to Moody Teleprompter.**
 
-It sits at the top of your screen, right under the webcam, so you can read your notes and still look at the camera. Zoom, Teams, Google Meet, OBS and screen recordings don't pick it up.
+It sits at the top of your screen, right under the webcam, so you can read your notes and still look at the camera. On Windows 10 version 2004 or later, Zoom, Teams, Google Meet, OBS and screen recordings don't pick it up.
 
 [![Download](https://img.shields.io/github/v/release/AnassSaleh/FloatPrompter?label=Download&style=for-the-badge&color=2563eb)](https://github.com/AnassSaleh/FloatPrompter/releases/latest)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](#install)
@@ -37,9 +37,9 @@ It sits at the top of your screen, right under the webcam, so you can read your 
 
 ## What it does
 
-The panel docks at the top center of your screen, under the webcam, so your eyes stay close to the camera while you read. It's also hidden from screen sharing and recordings. People watching on Zoom, Teams, Meet, Discord or OBS see neither the prompter nor the window with your script in it.
+The panel docks at the top center of your screen, under the webcam, so your eyes stay close to the camera while you read. On Windows 10 version 2004 or later it's also hidden from screen sharing and recordings, so people watching on Zoom, Teams, Meet, Discord or OBS see neither the prompter nor the window with your script in it. Older Windows versions can only blank it out, so viewers see a black box where it sits. Nothing on screen can hide from a phone camera pointed at it, or from a capture card recording your display output.
 
-With voice activation on, the text moves only while you talk and waits when you stop. Global hotkeys let you change the speed, pause or jump around from whatever app you're in.
+Global hotkeys let you change the speed, pause or jump around from whatever app you're in. With voice activation on, the text moves only while you talk and waits when you stop. To do that it only measures how loud your microphone is, on your PC. The audio is never recorded, saved or sent anywhere.
 
 The whole thing is one `.exe` of about 110 KB. There's no installer and no account, it never goes online, and it doesn't track you. It's MIT-licensed, so it stays free.
 
@@ -81,16 +81,16 @@ These work from any app.
 
 Your script and settings save automatically to `%APPDATA%\FloatPrompter`.
 
-## Compared with paid teleprompter apps
+## At a glance
 
-| | FloatPrompter | Typical paid apps |
-|---|:---:|:---:|
-| Price | **Free** | Subscription / one-time fee |
-| Open source | ✅ | ❌ |
-| Hidden from screen sharing | ✅ | Varies |
-| Voice-activated scrolling | ✅ | Often paid tier |
-| Works offline, no account | ✅ | Varies |
-| Install size | ~110 KB | 50–200 MB |
+| | FloatPrompter |
+|---|---|
+| Price | Free |
+| Source code | Open, MIT license |
+| Hidden from screen sharing | Yes, on Windows 10 version 2004 or later |
+| Voice-activated scrolling | Yes, included |
+| Works offline, no account | Yes |
+| Size | One ~110 KB `.exe`, no installer |
 
 ## Build from source
 
