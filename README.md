@@ -8,7 +8,7 @@
 
 It sits at the top of your screen, right under the webcam, so you can read your notes and still look at the camera. On Windows 10 version 2004 or later, Zoom, Teams, Google Meet, OBS and screen recordings don't pick it up.
 
-[![Download](https://img.shields.io/github/v/release/AnassSaleh/FloatPrompter?label=Download&style=for-the-badge&color=2563eb)](https://github.com/AnassSaleh/FloatPrompter/releases/latest)
+[![Download](https://img.shields.io/github/v/release/AnassSaleh/FloatPrompter?label=Download&style=for-the-badge&color=2563eb&cacheSeconds=3600)](https://github.com/AnassSaleh/FloatPrompter/releases/latest)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](#install)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
@@ -16,8 +16,8 @@ It sits at the top of your screen, right under the webcam, so you can read your 
 ![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.x-512BD4)
 ![Size](https://img.shields.io/badge/exe-~110%20KB-orange)
 ![No install](https://img.shields.io/badge/install-none%20needed-brightgreen)
-![Downloads](https://img.shields.io/github/downloads/AnassSaleh/FloatPrompter/total?color=blue)
-![Stars](https://img.shields.io/github/stars/AnassSaleh/FloatPrompter?style=social)
+![Downloads](https://img.shields.io/github/downloads/AnassSaleh/FloatPrompter/total?color=blue&cacheSeconds=3600)
+![Stars](https://img.shields.io/github/stars/AnassSaleh/FloatPrompter?style=social&cacheSeconds=3600)
 
 <p>
   <a href="https://github.com/AnassSaleh/FloatPrompter/releases/latest"><b>Download</b></a> ·
