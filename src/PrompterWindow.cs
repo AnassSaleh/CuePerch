@@ -102,6 +102,8 @@ namespace FloatPrompter
 
             SourceInitialized += OnSourceInitialized;
             Loaded += delegate { Place(); PlaceAgainSoon(); };
+            ContentRendered += delegate { ApplyCapture(); };
+            IsVisibleChanged += delegate { if (IsVisible) Dispatcher.BeginInvoke(new Action(ApplyCapture), DispatcherPriority.Background); };
 
             model.Changed += OnModelChanged;
             model.RestartRequested += delegate { offset = 0; gain = 0; ApplyOffset(); };
@@ -129,8 +131,24 @@ namespace FloatPrompter
             int ex = Native.GetWindowLong(hwnd, Native.GWL_EXSTYLE);
             Native.SetWindowLong(hwnd, Native.GWL_EXSTYLE, ex | Native.WS_EX_TOOLWINDOW | Native.WS_EX_NOACTIVATE);
             HwndSource.FromHwnd(hwnd).AddHook(WndProc);
-            Native.ApplyCaptureExclusion(hwnd, S.HideFromCapture);
+            ApplyCapture();
             Place();
+        }
+
+        /// <summary>
+        /// Ask Windows to keep the prompter out of screen captures and tell the editor what Windows actually did.
+        /// Called again once the window is on screen: a layered (transparent) window can lose or reject the
+        /// setting if it is only applied before its first frame.
+        /// </summary>
+        private void ApplyCapture()
+        {
+            if (hwnd == IntPtr.Zero) return;
+            uint a = Native.ApplyCaptureExclusion(hwnd, S.HideFromCapture, "prompter");
+            if (a != model.PrompterAffinity)
+            {
+                model.PrompterAffinity = a;
+                model.Notify("CaptureStatus");
+            }
         }
 
         private IntPtr WndProc(IntPtr h, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -339,7 +357,7 @@ namespace FloatPrompter
                     Place(); PlaceAgainSoon();
                     break;
                 case "Position": Place(); PlaceAgainSoon(); break;
-                case "Capture": Native.ApplyCaptureExclusion(hwnd, S.HideFromCapture); break;
+                case "Capture": ApplyCapture(); break;
                 case "PrompterVisible":
                     if (model.PrompterVisible) { Show(); Place(); } else Hide();
                     UpdateRendering();

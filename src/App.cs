@@ -10,9 +10,9 @@ using System.Windows.Threading;
 [assembly: AssemblyTitle("FloatPrompter")]
 [assembly: AssemblyProduct("FloatPrompter")]
 [assembly: AssemblyDescription("Floating teleprompter for Windows, hidden from screen sharing")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyInformationalVersion("1.0.1")]
 // Opt in to modern WPF behaviour (per-monitor DPI etc.). Runs on the .NET Framework 4.x built into Windows 10/11.
 [assembly: TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
 

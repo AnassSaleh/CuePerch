@@ -97,18 +97,65 @@ namespace FloatPrompter
             return 1.0;
         }
 
-        /// <summary>Hide a window from screen capture / sharing (Win10 2004+), with a fallback for older builds.</summary>
-        public static void ApplyCaptureExclusion(IntPtr hwnd, bool hide)
+        /// <summary>
+        /// Hide a window from screen capture / sharing (Win10 2004+), with a fallback for older builds.
+        /// Returns the affinity Windows actually reports afterwards, so callers can tell the user when hiding failed.
+        /// </summary>
+        public static uint ApplyCaptureExclusion(IntPtr hwnd, bool hide, string who)
         {
-            if (hwnd == IntPtr.Zero) return;
+            if (hwnd == IntPtr.Zero) return WDA_NONE;
+            int err1 = 0, err2 = 0;
             if (hide)
             {
                 if (!SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE))
-                    SetWindowDisplayAffinity(hwnd, WDA_MONITOR);
+                {
+                    err1 = Marshal.GetLastWin32Error();
+                    if (!SetWindowDisplayAffinity(hwnd, WDA_MONITOR)) err2 = Marshal.GetLastWin32Error();
+                }
             }
             else
             {
                 SetWindowDisplayAffinity(hwnd, WDA_NONE);
+            }
+
+            uint actual;
+            if (!GetWindowDisplayAffinity(hwnd, out actual)) actual = WDA_NONE;
+            bool layered = (GetWindowLong(hwnd, GWL_EXSTYLE) & WS_EX_LAYERED) != 0;
+            string key = who + ":" + hide + ":" + actual;
+            string prev;
+            lastLogged.TryGetValue(who, out prev);
+            if (prev != key)
+            {
+                lastLogged[who] = key;
+                App.Log(string.Format("Capture[{0}]: hide={1} affinity=0x{2:X} layered={3} err={4}/{5} windows={6}",
+                    who, hide, actual, layered, err1, err2, WindowsBuild));
+            }
+            return actual;
+        }
+
+        private static readonly System.Collections.Generic.Dictionary<string, string> lastLogged =
+            new System.Collections.Generic.Dictionary<string, string>();
+
+        public const int WS_EX_LAYERED = 0x00080000;
+
+        /// <summary>Windows build, e.g. "10.0.19045.4651", read from the registry (Environment.OSVersion can be shimmed).</summary>
+        public static string WindowsBuild
+        {
+            get
+            {
+                try
+                {
+                    using (var k = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                    {
+                        if (k != null)
+                        {
+                            object build = k.GetValue("CurrentBuild"), ubr = k.GetValue("UBR"), name = k.GetValue("DisplayVersion");
+                            return "10.0." + build + "." + ubr + (name != null ? " (" + name + ")" : "");
+                        }
+                    }
+                }
+                catch (Exception) { }
+                return Environment.OSVersion.Version.ToString();
             }
         }
     }

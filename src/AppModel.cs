@@ -13,6 +13,8 @@ namespace FloatPrompter
         public bool PrompterVisible { get; private set; }
         /// <summary>0..1 how far through the script the prompter is (written by the prompter).</summary>
         public double Progress { get; set; }
+        /// <summary>Display affinity Windows reports for the prompter after we asked it to hide (0x11 hidden, 0x1 black box, 0 visible).</summary>
+        public uint PrompterAffinity { get; set; }
 
         /// <summary>Raised with a key: Script, Speed, Text, Theme, Size, Position, Voice, Capture, Hover, IsPlaying, PrompterVisible.</summary>
         public event Action<string> Changed;

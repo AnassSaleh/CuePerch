@@ -294,6 +294,8 @@
           <CheckBox x:Name="HideSwitch" Style="{StaticResource Switch}" AutomationProperties.Name="Hide from screen sharing">
             <TextBlock Text="Hide from screen sharing and recording" TextWrapping="Wrap"/>
           </CheckBox>
+          <TextBlock x:Name="CaptureStatus" Style="{StaticResource Hint}" Foreground="#B45309" Margin="0,0,0,8"
+                     Visibility="Collapsed" AutomationProperties.AutomationId="CaptureStatus"/>
           <CheckBox x:Name="HoverSwitch" Style="{StaticResource Switch}" AutomationProperties.Name="Pause on hover">
             <TextBlock Text="Pause while the mouse is over it" TextWrapping="Wrap"/>
           </CheckBox>

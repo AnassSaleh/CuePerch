@@ -30,6 +30,7 @@ namespace FloatPrompter
         private readonly ComboBox fontBox, displayBox;
         private readonly RadioButton alignCenter, alignLeft, themeDark, themeLight;
         private readonly CheckBox voiceSwitch, showSwitch, hideSwitch, hoverSwitch;
+        private readonly TextBlock captureStatus;
         private readonly Button playBtn;
         private readonly FrameworkElement voicePanel, meterTrack, meterFill, meterMark;
         private readonly Grid hotkeyGrid;
@@ -80,6 +81,7 @@ namespace FloatPrompter
             voiceSwitch = Find<CheckBox>("VoiceSwitch");
             showSwitch = Find<CheckBox>("ShowSwitch");
             hideSwitch = Find<CheckBox>("HideSwitch");
+            captureStatus = Find<TextBlock>("CaptureStatus");
             hoverSwitch = Find<CheckBox>("HoverSwitch");
             playBtn = Find<Button>("PlayBtn");
             voicePanel = Find<FrameworkElement>("VoicePanel");
@@ -111,7 +113,7 @@ namespace FloatPrompter
 
             SourceInitialized += delegate
             {
-                Native.ApplyCaptureExclusion(new WindowInteropHelper(this).Handle, S.HideFromCapture);
+                Native.ApplyCaptureExclusion(new WindowInteropHelper(this).Handle, S.HideFromCapture, "editor");
             };
             Closed += delegate { App.Quit(); };
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += delegate { Dispatcher.BeginInvoke(new Action(RefreshDisplays)); };
@@ -138,6 +140,7 @@ namespace FloatPrompter
             UpdateLabels();
             UpdatePlayButton();
             UpdateWordInfo();
+            UpdateCaptureStatus();
             voicePanel.Visibility = S.VoiceActivation ? Visibility.Visible : Visibility.Collapsed;
         }
 
@@ -239,6 +242,25 @@ namespace FloatPrompter
             };
         }
 
+        /// <summary>Warn when Windows did not actually hide the prompter from screen capture.</summary>
+        private void UpdateCaptureStatus()
+        {
+            uint a = model.PrompterAffinity;
+            string msg = null;
+            if (S.HideFromCapture && a != Native.WDA_EXCLUDEFROMCAPTURE)
+            {
+                if (a == Native.WDA_MONITOR)
+                    msg = "This version of Windows can only black out the prompter in screen shares, not hide it. " +
+                          "Windows 10 version 2004 or later hides it completely.";
+                else
+                    msg = "Windows didn't let FloatPrompter hide the prompter on this PC, so screen shares and recordings can show it. " +
+                          "Share a single app window instead of your whole screen, or update Windows.";
+                msg += " (Windows " + Native.WindowsBuild + ")";
+            }
+            captureStatus.Text = msg ?? "";
+            captureStatus.Visibility = msg == null ? Visibility.Collapsed : Visibility.Visible;
+        }
+
         private void OnModelChanged(string what)
         {
             syncing = true;
@@ -255,8 +277,10 @@ namespace FloatPrompter
                         break;
                     case "Capture":
                         hideSwitch.IsChecked = S.HideFromCapture;
-                        Native.ApplyCaptureExclusion(new WindowInteropHelper(this).Handle, S.HideFromCapture);
+                        Native.ApplyCaptureExclusion(new WindowInteropHelper(this).Handle, S.HideFromCapture, "editor");
+                        UpdateCaptureStatus();
                         break;
+                    case "CaptureStatus": UpdateCaptureStatus(); break;
                     case "PrompterVisible": showSwitch.IsChecked = model.PrompterVisible; break;
                     case "IsPlaying": UpdatePlayButton(); break;
                 }

@@ -4,6 +4,15 @@ All notable changes to FloatPrompter are listed here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-14
+
+### Fixed
+- The prompter now re-applies "hide from screen sharing" once it is on screen, not only before its first frame. On some Windows 10 PCs the early setting didn't stick and screen shares could show the prompter.
+
+### Added
+- A warning under "Hide from screen sharing" when Windows doesn't actually hide the prompter on your PC, with the Windows build and what to do instead.
+- The log (`%APPDATA%\FloatPrompter\log.txt`) records what Windows reported for screen-capture hiding, to help with bug reports.
+
 ### Added
 - README with demo GIF, screenshots and hotkey reference.
 - MIT license, contributing guide, changelog and issue templates.
@@ -19,5 +28,6 @@ All notable changes to FloatPrompter are listed here. The format follows [Keep a
 - Adjustable speed, text size, font, alignment, dark/light look and multi-monitor placement.
 - Script and settings saved automatically to `%APPDATA%\FloatPrompter`.
 
-[Unreleased]: https://github.com/AnassSaleh/FloatPrompter/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/AnassSaleh/FloatPrompter/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/AnassSaleh/FloatPrompter/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/AnassSaleh/FloatPrompter/releases/tag/v1.0.0

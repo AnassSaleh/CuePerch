@@ -38,7 +38,7 @@ It sits at the top of your screen, right under the webcam, so you can read your 
 
 ## What it does
 
-The panel docks at the top center of your screen, under the webcam, so your eyes stay close to the camera while you read. On Windows 10 version 2004 or later it's also hidden from screen sharing and recordings, so people watching on Zoom, Teams, Meet, Discord or OBS see neither the prompter nor the window with your script in it. Older Windows versions can only blank it out, so viewers see a black box where it sits. Nothing on screen can hide from a phone camera pointed at it, or from a capture card recording your display output.
+The panel docks at the top center of your screen, under the webcam, so your eyes stay close to the camera while you read. On Windows 10 version 2004 or later it's also hidden from screen sharing and recordings, so people watching on Zoom, Teams, Meet, Discord or OBS see neither the prompter nor the window with your script in it. If Windows won't hide it on your PC, FloatPrompter shows a warning, and sharing a single app window instead of your whole screen keeps the prompter out of the share. Nothing on screen can hide from a phone camera pointed at it, or from a capture card recording your display output.
 
 Global hotkeys let you change the speed, pause or jump around from whatever app you're in. With voice activation on, the text moves only while you talk and waits when you stop. To do that it only measures how loud your microphone is, on your PC. The audio is never recorded, saved or sent anywhere.
 
