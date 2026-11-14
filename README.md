@@ -21,6 +21,7 @@ It sits at the top of your screen, right under the webcam, so you can read your 
 
 <p>
   <a href="https://github.com/AnassSaleh/FloatPrompter/releases/latest"><b>Download</b></a> ·
+  <a href="https://anasssaleh.github.io/FloatPrompter/">Website</a> ·
   <a href="#what-it-does">Features</a> ·
   <a href="#hotkeys">Hotkeys</a> ·
   <a href="#build-from-source">Build</a> ·
