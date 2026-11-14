@@ -29,7 +29,7 @@ It sits right under your webcam so you keep eye contact while you read, and it's
 
 <img src="assets/demo.gif" width="900" alt="Demo: the script scrolls in FloatPrompter under the webcam on your screen, while people on the call see nothing" />
 
-<sub>Left: what you see. Right: what everyone on the call sees.</sub>
+<sub>Left: what you see. Right: what everyone on the call sees. The scrolling is a real recording of the app.</sub>
 
 </div>
 
