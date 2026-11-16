@@ -1,4 +1,4 @@
-# Builds dist\FloatPrompter.exe using the C# compiler that ships with Windows (.NET Framework 4.x).
+# Builds dist\CuePerch.exe using the C# compiler that ships with Windows (.NET Framework 4.x).
 # No SDK or downloads needed:  powershell -ExecutionPolicy Bypass -File build.ps1
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -11,16 +11,16 @@ New-Item -ItemType Directory -Force $out | Out-Null
 $sources = Get-ChildItem (Join-Path $root 'src') -Filter *.cs | ForEach-Object { $_.FullName }
 $cscArgs = @(
   '/nologo', '/target:winexe', '/platform:anycpu', '/optimize+', '/utf8output',
-  "/out:$out\FloatPrompter.exe",
+  "/out:$out\CuePerch.exe",
   "/win32icon:$root\assets\icon.ico",
   "/win32manifest:$root\src\app.manifest",
   "/r:$wpf\PresentationCore.dll", "/r:$wpf\PresentationFramework.dll", "/r:$wpf\WindowsBase.dll",
   "/r:$fw\System.Xaml.dll", '/r:System.dll', '/r:System.Core.dll', '/r:System.Xml.dll',
   '/r:System.Windows.Forms.dll', '/r:System.Drawing.dll', '/r:System.Runtime.Serialization.dll',
-  "/resource:$root\src\ControlWindow.xaml,FloatPrompter.ControlWindow.xaml",
-  "/resource:$root\src\Prompter.xaml,FloatPrompter.Prompter.xaml"
+  "/resource:$root\src\ControlWindow.xaml,CuePerch.ControlWindow.xaml",
+  "/resource:$root\src\Prompter.xaml,CuePerch.Prompter.xaml"
 ) + $sources
 
 & "$fw\csc.exe" @cscArgs
 if ($LASTEXITCODE -ne 0) { throw "Build failed" }
-Get-Item "$out\FloatPrompter.exe" | Select-Object FullName, Length
+Get-Item "$out\CuePerch.exe" | Select-Object FullName, Length

@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Forms = System.Windows.Forms;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     /// <summary>The floating, always-on-top prompter panel.</summary>
     public class PrompterWindow : Window
@@ -48,7 +48,7 @@ namespace FloatPrompter
         public PrompterWindow(AppModel m)
         {
             model = m;
-            Title = "FloatPrompter Prompter";
+            Title = "CuePerch Prompter";
             WindowStyle = WindowStyle.None;
             AllowsTransparency = true;
             Background = Brushes.Transparent;

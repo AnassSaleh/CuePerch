@@ -14,7 +14,7 @@ body:
     attributes:
       label: Steps to reproduce
       placeholder: |
-        1. Open FloatPrompter
+        1. Open CuePerch
         2. Press Start
         3. ...
     validations:
@@ -22,7 +22,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: FloatPrompter version
+      label: CuePerch version
       placeholder: "1.0.0"
   - type: input
     id: windows
@@ -41,4 +41,4 @@ body:
     id: extra
     attributes:
       label: Anything else?
-      description: Screenshots, your monitor setup, or the contents of `%APPDATA%\FloatPrompter\log.txt` if it exists.
+      description: Screenshots, your monitor setup, or the contents of `%APPDATA%\CuePerch\log.txt` if it exists.

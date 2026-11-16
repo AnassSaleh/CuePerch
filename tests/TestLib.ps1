@@ -1,4 +1,4 @@
-# Helpers for driving FloatPrompter in automated tests (UI Automation + synthetic input + screen capture).
+# Helpers for driving CuePerch in automated tests (UI Automation + synthetic input + screen capture).
 Add-Type -AssemblyName UIAutomationClient, UIAutomationTypes, System.Windows.Forms, System.Drawing
 Add-Type @"
 using System;
@@ -17,23 +17,23 @@ public static class TNative {
 }
 "@
 
-$script:Exe = Join-Path $PSScriptRoot '..\dist\FloatPrompter.exe'
+$script:Exe = Join-Path $PSScriptRoot '..\dist\CuePerch.exe'
 
 function Start-Prompter([string]$DataDir, [hashtable]$Settings) {
   New-Item -ItemType Directory -Force $DataDir | Out-Null
   if ($Settings) { ($Settings | ConvertTo-Json) | Set-Content -Encoding UTF8 (Join-Path $DataDir 'settings.json') }
   $psi = New-Object System.Diagnostics.ProcessStartInfo $script:Exe
   $psi.UseShellExecute = $false
-  $psi.EnvironmentVariables['FLOATPROMPTER_DATA_DIR'] = $DataDir
-  if ($env:FP_FAKE_MIC) { $psi.EnvironmentVariables['FLOATPROMPTER_FAKE_MIC'] = $env:FP_FAKE_MIC }
+  $psi.EnvironmentVariables['CUEPERCH_DATA_DIR'] = $DataDir
+  if ($env:FP_FAKE_MIC) { $psi.EnvironmentVariables['CUEPERCH_FAKE_MIC'] = $env:FP_FAKE_MIC }
   $p = [System.Diagnostics.Process]::Start($psi)
-  for ($i = 0; $i -lt 50; $i++) { Start-Sleep -Milliseconds 200; if ((Get-Hwnd 'FloatPrompter Prompter') -ne [IntPtr]::Zero -and (Get-Hwnd 'FloatPrompter') -ne [IntPtr]::Zero) { break } }
+  for ($i = 0; $i -lt 50; $i++) { Start-Sleep -Milliseconds 200; if ((Get-Hwnd 'CuePerch Prompter') -ne [IntPtr]::Zero -and (Get-Hwnd 'CuePerch') -ne [IntPtr]::Zero) { break } }
   Start-Sleep -Milliseconds 800
   return $p
 }
 
 function Stop-Prompter($p) {
-  $h = Get-Hwnd 'FloatPrompter'
+  $h = Get-Hwnd 'CuePerch'
   if ($h -ne [IntPtr]::Zero) { (Get-El $h).GetCurrentPattern([System.Windows.Automation.WindowPattern]::Pattern).Close() }
   if ($p) { if (-not $p.WaitForExit(5000)) { $p.Kill() } }
 }
@@ -43,7 +43,7 @@ function Get-El([IntPtr]$h) { [System.Windows.Automation.AutomationElement]::Fro
 function Get-Rect([IntPtr]$h) { $r = New-Object TNative+RECT; [void][TNative]::GetWindowRect($h, [ref]$r); $r }
 
 function Get-State {
-  $h = Get-Hwnd 'FloatPrompter Prompter'
+  $h = Get-Hwnd 'CuePerch Prompter'
   $t = (Get-El $h).Current.HelpText
   $o = @{}
   foreach ($kv in $t.Split(';')) { $a = $kv.Split('='); $o[$a[0]] = [double]::Parse($a[1], [Globalization.CultureInfo]::InvariantCulture) }
@@ -52,7 +52,7 @@ function Get-State {
 
 function Find-ByName([string]$name, $patternAvailableProperty) {
   $A = [System.Windows.Automation.AutomationElement]
-  $root = Get-El (Get-Hwnd 'FloatPrompter')
+  $root = Get-El (Get-Hwnd 'CuePerch')
   $c = New-Object System.Windows.Automation.PropertyCondition($A::NameProperty, $name)
   if ($patternAvailableProperty) {
     $c2 = New-Object System.Windows.Automation.PropertyCondition($patternAvailableProperty, $true)
@@ -61,7 +61,7 @@ function Find-ByName([string]$name, $patternAvailableProperty) {
   $root.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $c)
 }
 function Find-ById([string]$id) {
-  $root = Get-El (Get-Hwnd 'FloatPrompter')
+  $root = Get-El (Get-Hwnd 'CuePerch')
   $c = New-Object System.Windows.Automation.PropertyCondition([System.Windows.Automation.AutomationElement]::AutomationIdProperty, $id)
   $root.FindFirst([System.Windows.Automation.TreeScope]::Descendants, $c)
 }

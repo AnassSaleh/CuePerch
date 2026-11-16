@@ -7,20 +7,20 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Threading;
 
-[assembly: AssemblyTitle("FloatPrompter")]
-[assembly: AssemblyProduct("FloatPrompter")]
+[assembly: AssemblyTitle("CuePerch")]
+[assembly: AssemblyProduct("CuePerch")]
 [assembly: AssemblyDescription("Floating teleprompter for Windows, hidden from screen sharing")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
-[assembly: AssemblyInformationalVersion("1.0.1")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyInformationalVersion("1.1.0")]
 // Opt in to modern WPF behaviour (per-monitor DPI etc.). Runs on the .NET Framework 4.x built into Windows 10/11.
 [assembly: TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
 
-namespace FloatPrompter
+namespace CuePerch
 {
     public static class App
     {
-        public const string EditorTitle = "FloatPrompter";
+        public const string EditorTitle = "CuePerch";
 
         public static AppModel Model;
         private static Application app;
@@ -36,7 +36,7 @@ namespace FloatPrompter
         public static int Main(string[] args)
         {
             bool created;
-            using (var mutex = new Mutex(true, "FloatPrompter.SingleInstance.v1", out created))
+            using (var mutex = new Mutex(true, "CuePerch.SingleInstance.v1", out created))
             {
                 if (!created)
                 {
@@ -108,7 +108,7 @@ namespace FloatPrompter
 
         public static object LoadXaml(string name)
         {
-            using (Stream s = typeof(App).Assembly.GetManifestResourceStream("FloatPrompter." + name))
+            using (Stream s = typeof(App).Assembly.GetManifestResourceStream("CuePerch." + name))
             {
                 if (s == null) throw new InvalidOperationException("Missing resource " + name);
                 return XamlReader.Load(s);

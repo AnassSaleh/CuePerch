@@ -1,7 +1,7 @@
 // Unit test for the voice-activation logic in MicMonitor (feeds synthetic audio frames).
 // Build + run: powershell -ExecutionPolicy Bypass -File tests\run-voice-test.ps1
 using System;
-using FloatPrompter;
+using CuePerch;
 
 static class VoiceGateTest
 {

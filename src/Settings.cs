@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     [DataContract]
     public class Settings
@@ -32,7 +32,7 @@ namespace FloatPrompter
         public const double MinHeight = 80, MaxHeight = 1200;
 
         public static readonly string DefaultScript =
-            "Welcome to FloatPrompter!\r\n" +
+            "Welcome to CuePerch!\r\n" +
             "Paste or type your script in the main window, then press Start. [pause]\r\n\r\n" +
             "The text scrolls slowly up here, right under your webcam, so you can keep eye contact while you read.\r\n\r\n" +
             "Make it faster with Ctrl+Alt+Up and slower with Ctrl+Alt+Down. " +
@@ -95,10 +95,30 @@ namespace FloatPrompter
         {
             get
             {
-                string over = Environment.GetEnvironmentVariable("FLOATPROMPTER_DATA_DIR");
+                string over = Environment.GetEnvironmentVariable("CUEPERCH_DATA_DIR");
                 if (!string.IsNullOrEmpty(over)) return over;
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FloatPrompter");
+                string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string dir = Path.Combine(appData, "CuePerch");
+                MigrateFromOldName(Path.Combine(appData, "FloatPrompter"), dir);
+                return dir;
             }
+        }
+
+        static bool migrationChecked;
+
+        /// <summary>The app was called FloatPrompter before v1.1.0. Copy its settings once so people keep their script.</summary>
+        static void MigrateFromOldName(string oldDir, string newDir)
+        {
+            if (migrationChecked) return;
+            migrationChecked = true;
+            try
+            {
+                if (Directory.Exists(newDir) || !Directory.Exists(oldDir)) return;
+                Directory.CreateDirectory(newDir);
+                foreach (string f in Directory.GetFiles(oldDir))
+                    File.Copy(f, Path.Combine(newDir, Path.GetFileName(f)), false);
+            }
+            catch { }
         }
 
         public static string FilePath { get { return Path.Combine(Dir, "settings.json"); } }

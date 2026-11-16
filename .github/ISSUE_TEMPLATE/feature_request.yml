@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an idea for FloatPrompter
+description: Suggest an idea for CuePerch
 labels: [enhancement]
 body:
   - type: textarea
@@ -12,7 +12,7 @@ body:
   - type: textarea
     id: idea
     attributes:
-      label: What would you like FloatPrompter to do?
+      label: What would you like CuePerch to do?
     validations:
       required: true
   - type: textarea

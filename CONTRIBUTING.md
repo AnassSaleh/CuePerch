@@ -1,20 +1,20 @@
-# Contributing to FloatPrompter
+# Contributing to CuePerch
 
 Thanks for helping out. Bug reports, ideas and pull requests are all welcome.
 
 ## Reporting a bug or asking for a feature
 
-Open an [issue](https://github.com/AnassSaleh/FloatPrompter/issues/new/choose) and pick a template. For bugs, include your Windows version and the steps that cause the problem.
+Open an [issue](https://github.com/AnassSaleh/CuePerch/issues/new/choose) and pick a template. For bugs, include your Windows version and the steps that cause the problem.
 
 ## Building
 
-FloatPrompter builds with the C# compiler that ships with Windows, so you don't need Visual Studio or the .NET SDK:
+CuePerch builds with the C# compiler that ships with Windows, so you don't need Visual Studio or the .NET SDK:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File build.ps1
 ```
 
-The exe lands in `dist\FloatPrompter.exe`.
+The exe lands in `dist\CuePerch.exe`.
 
 ## Code notes
 
@@ -29,7 +29,7 @@ powershell -ExecutionPolicy Bypass -File tests\run-tests.ps1
 powershell -ExecutionPolicy Bypass -File tests\run-voice-test.ps1
 ```
 
-`run-tests.ps1` drives the real app through UI Automation and moves the mouse, so don't touch the PC while it runs (about 5 minutes). Close any running FloatPrompter first.
+`run-tests.ps1` drives the real app through UI Automation and moves the mouse, so don't touch the PC while it runs (about 5 minutes). Close any running CuePerch first.
 
 ## Pull requests
 

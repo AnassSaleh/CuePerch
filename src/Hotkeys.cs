@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Interop;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     /// <summary>System-wide hotkeys (work even when another app, e.g. Zoom or OBS, is focused).</summary>
     public class Hotkeys : IDisposable
@@ -21,7 +21,7 @@ namespace FloatPrompter
 
         public Hotkeys()
         {
-            var p = new HwndSourceParameters("FloatPrompterHotkeys")
+            var p = new HwndSourceParameters("CuePerchHotkeys")
             {
                 Width = 0,
                 Height = 0,

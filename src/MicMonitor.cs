@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     public enum MicState { Off = 0, Starting = 1, Listening = 2, NoDevice = 3, NoSignal = 4 }
 
@@ -60,7 +60,7 @@ namespace FloatPrompter
             state = (int)MicState.Starting;
             var t = new RunToken();
             token = t;
-            new Thread(() => Run(t)) { IsBackground = true, Name = "FloatPrompter mic" }.Start();
+            new Thread(() => Run(t)) { IsBackground = true, Name = "CuePerch mic" }.Start();
         }
 
         public void Stop()
@@ -126,7 +126,7 @@ namespace FloatPrompter
 
         private void SetState(RunToken t, MicState s) { if (!t.Cancel) state = (int)s; }
 
-        /// <summary>Test hook: FLOATPROMPTER_FAKE_MIC=path to a file holding an amplitude (0..1) to simulate a voice.</summary>
+        /// <summary>Test hook: CUEPERCH_FAKE_MIC=path to a file holding an amplitude (0..1) to simulate a voice.</summary>
         private void FakeCapture(RunToken t, string path)
         {
             SetState(t, MicState.Listening);
@@ -146,7 +146,7 @@ namespace FloatPrompter
 
         private void Capture(RunToken t)
         {
-            string fake = Environment.GetEnvironmentVariable("FLOATPROMPTER_FAKE_MIC");
+            string fake = Environment.GetEnvironmentVariable("CUEPERCH_FAKE_MIC");
             if (!string.IsNullOrEmpty(fake)) { FakeCapture(t, fake); return; }
             const int bufBytes = FrameSamples * 2;
             const int bufCount = 4;

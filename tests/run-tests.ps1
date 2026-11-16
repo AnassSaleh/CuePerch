@@ -1,15 +1,15 @@
-# End-to-end tests for FloatPrompter. Run: powershell -ExecutionPolicy Bypass -File tests\run-tests.ps1
+# End-to-end tests for CuePerch. Run: powershell -ExecutionPolicy Bypass -File tests\run-tests.ps1
 # Drives the real app with UI Automation, synthetic keyboard/mouse input and GDI screen capture.
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'TestLib.ps1')
-Get-Process FloatPrompter -ErrorAction SilentlyContinue | Stop-Process -Force
+Get-Process CuePerch -ErrorAction SilentlyContinue | Stop-Process -Force
 
 $data = Join-Path $env:TEMP 'fp-e2e'
 Remove-Item -Recurse -Force $data -ErrorAction SilentlyContinue
 $script = (1..40 | ForEach-Object { "Line number $_ of the test script, with enough words to wrap around. [cue $_]" }) -join "`r`n"
 $p = Start-Prompter $data @{ Script = $script; HideFromCapture = $true }
-$hp = Get-Hwnd 'FloatPrompter Prompter'
-$he = Get-Hwnd 'FloatPrompter'
+$hp = Get-Hwnd 'CuePerch Prompter'
+$he = Get-Hwnd 'CuePerch'
 $scr = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
 
 Write-Host "`n== Window placement =="
@@ -206,7 +206,7 @@ $fake = Join-Path $data 'fake-mic.txt'
 '0' | Set-Content $fake
 $env:FP_FAKE_MIC = $fake
 $p = Start-Prompter $data $null
-$hp = Get-Hwnd 'FloatPrompter Prompter'
+$hp = Get-Hwnd 'CuePerch Prompter'
 Toggle-Named 'Voice activation'; Start-Sleep -Milliseconds 800
 Send-Hotkey 0x52; Send-Hotkey 0x50; Start-Sleep -Seconds 1.5
 Check ((Get-State).offset -lt 0.5) "silence: text holds still"
@@ -228,10 +228,10 @@ Toggle-Named 'Voice activation'
 
 Write-Host "`n== Single instance =="
 $psi = New-Object System.Diagnostics.ProcessStartInfo $script:Exe
-$psi.UseShellExecute = $false; $psi.EnvironmentVariables['FLOATPROMPTER_DATA_DIR'] = $data
+$psi.UseShellExecute = $false; $psi.EnvironmentVariables['CUEPERCH_DATA_DIR'] = $data
 $p2 = [System.Diagnostics.Process]::Start($psi)
 Check ($p2.WaitForExit(5000)) "a second copy exits and focuses the running one"
-Check ((Get-Process FloatPrompter).Count -eq 1) "only one FloatPrompter is running"
+Check ((Get-Process CuePerch).Count -eq 1) "only one CuePerch is running"
 
 Write-Host "`n== Settings are remembered =="
 Set-RangeValue 'Scroll speed' 11
@@ -241,7 +241,7 @@ Start-Sleep -Milliseconds 300
 Stop-Prompter $p
 Check (Test-Path (Join-Path $data 'settings.json')) "settings.json was written"
 $p = Start-Prompter $data $null
-$hp = Get-Hwnd 'FloatPrompter Prompter'
+$hp = Get-Hwnd 'CuePerch Prompter'
 $r = Get-Rect $hp
 Check ((Get-State).speed -eq 11) "speed remembered"
 Check ((Get-RangeValue 'Text size') -eq 33) "text size remembered"

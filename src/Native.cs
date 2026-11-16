@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     internal static class Native
     {

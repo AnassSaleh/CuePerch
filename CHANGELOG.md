@@ -1,8 +1,17 @@
 # Changelog
 
-All notable changes to FloatPrompter are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
+All notable changes to CuePerch (called FloatPrompter before v1.1.0) are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
+## [1.1.0] - 2026-11-17
+
+### Changed
+- Renamed from FloatPrompter to CuePerch. The exe is now `CuePerch.exe` and the repository is `AnassSaleh/CuePerch` (old links redirect).
+- Script and settings now live in `%APPDATA%\CuePerch`. On first run, CuePerch copies them from `%APPDATA%\FloatPrompter` so nothing is lost.
+
+### Removed
+- The GitHub Pages website. The README on GitHub is now the project's home page.
 
 ## [1.0.1] - 2026-11-14
 
@@ -28,6 +37,7 @@ All notable changes to FloatPrompter are listed here. The format follows [Keep a
 - Adjustable speed, text size, font, alignment, dark/light look and multi-monitor placement.
 - Script and settings saved automatically to `%APPDATA%\FloatPrompter`.
 
-[Unreleased]: https://github.com/AnassSaleh/FloatPrompter/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/AnassSaleh/FloatPrompter/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/AnassSaleh/FloatPrompter/releases/tag/v1.0.0
+[Unreleased]: https://github.com/AnassSaleh/CuePerch/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/AnassSaleh/CuePerch/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/AnassSaleh/CuePerch/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/AnassSaleh/CuePerch/releases/tag/v1.0.0

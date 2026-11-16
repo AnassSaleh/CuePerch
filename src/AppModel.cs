@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     /// <summary>Shared state between the editor window, the prompter and the hotkeys.</summary>
     public class AppModel

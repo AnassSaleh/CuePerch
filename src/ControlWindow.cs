@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Forms = System.Windows.Forms;
 
-namespace FloatPrompter
+namespace CuePerch
 {
     /// <summary>Main window: script editor and settings.</summary>
     public class ControlWindow : Window
@@ -253,7 +253,7 @@ namespace FloatPrompter
                     msg = "This version of Windows can only black out the prompter in screen shares, not hide it. " +
                           "Windows 10 version 2004 or later hides it completely.";
                 else
-                    msg = "Windows didn't let FloatPrompter hide the prompter on this PC, so screen shares and recordings can show it. " +
+                    msg = "Windows didn't let CuePerch hide the prompter on this PC, so screen shares and recordings can show it. " +
                           "Share a single app window instead of your whole screen, or update Windows.";
                 msg += " (Windows " + Native.WindowsBuild + ")";
             }

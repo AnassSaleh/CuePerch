@@ -38,7 +38,7 @@
 
     <TextBlock x:Name="Placeholder" Foreground="#99FFFFFF" FontSize="15" TextAlignment="Center"
                HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20"
-               Text="Your script shows up here.&#10;Type or paste it in the FloatPrompter window." Visibility="Collapsed"/>
+               Text="Your script shows up here.&#10;Type or paste it in the CuePerch window." Visibility="Collapsed"/>
 
     <Border x:Name="ProgressTrack" Width="3" HorizontalAlignment="Right" Margin="0,12,7,12"
             CornerRadius="1.5" Background="#26FFFFFF">
